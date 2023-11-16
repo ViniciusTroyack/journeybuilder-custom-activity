@@ -1,10 +1,6 @@
-// app.js
 "use strict";
 
 var connection = new Postmonger.Session();
-
-var payload = {};
-var eventDefinitionKey = null;
 
 
 function carregarCheckboxesDaDataExtension() {
@@ -31,8 +27,7 @@ $(document).ready(() => {
   carregarCheckboxesDaDataExtension();
 });
 
-$('#enviarDados').on('click', () => {
-  //connection.on('done', function () {
+connection.on('done', function () {
 
   const assunto = $('#assunto').val();
   const comentario = $('#comentario').val();
@@ -58,6 +53,6 @@ $('#enviarDados').on('click', () => {
       camposSelecionados: camposSelecionados
     },
   }
-  console.log(payload)
-  //connection.trigger('updateActivity', payload);
+
+  connection.trigger('updateActivity', payload);
 });
