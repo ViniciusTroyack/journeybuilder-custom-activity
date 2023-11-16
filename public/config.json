@@ -20,7 +20,7 @@
     "execute": {
       "inArguments": [],
       "outArguments": [],
-      "url": "https://qu0fmk7wi5.execute-api.us-east-1.amazonaws.com/dev/create-deal",
+      "url": "https://zendesk-mktc-mycap-b597740293ac.herokuapp.com/execute",
       "verb": "POST",
       "body": "",
       "header": "",
@@ -29,26 +29,27 @@
     }
   },
   "configurationArguments": {
+    "applicationExtensionKey": "fb8ac8a0-f7f3-49e4-bbc1-34cc58529ab7",
     "save": {
-      "url": "https://qu0fmk7wi5.execute-api.us-east-1.amazonaws.com/dev/on-save",
+      "url": "https://zendesk-mktc-mycap-b597740293ac.herokuapp.com/save",
       "verb": "POST"
     },
     "publish": {
-      "url": "https://qu0fmk7wi5.execute-api.us-east-1.amazonaws.com/dev/on-publish",
+      "url": "https://zendesk-mktc-mycap-b597740293ac.herokuapp.com/publish",
       "verb": "POST"
     },
     "validate": {
-      "url": "https://qu0fmk7wi5.execute-api.us-east-1.amazonaws.com/dev/on-validate",
+      "url": "https://zendesk-mktc-mycap-b597740293ac.herokuapp.com/validate",
       "verb": "POST"
     },
     "stop": {
-      "url": "https://qu0fmk7wi5.execute-api.us-east-1.amazonaws.com/dev/on-stop",
+      "url": "https://zendesk-mktc-mycap-b597740293ac.herokuapp.com/stop",
       "verb": "POST"
     }
   },
   "wizardSteps": [
     {
-      "label": "Adicione um Deal ao Pipedrive",
+      "label": "Teste",
       "key": "step1"
     }
   ],
