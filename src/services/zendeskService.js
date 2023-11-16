@@ -1,4 +1,4 @@
-import axios from 'axios';
+const axios = require('axios');
 require('dotenv').config();
 
 function createTicket(ticketData) {
@@ -16,6 +16,6 @@ function createTicket(ticketData) {
     return axios(config);
 }
 
-export default {
+module.exports = {
     createTicket
 };

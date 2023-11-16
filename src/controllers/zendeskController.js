@@ -1,5 +1,5 @@
 
-import { createTicket } from './zendeskService';
+const zendeskService = require('../services/zendeskService')
 
 function createZendeskTicket(req, res) {
     const ticketData = {
@@ -12,7 +12,7 @@ function createZendeskTicket(req, res) {
         }
     };
 
-    createTicket(ticketData)
+    zendeskService.createTicket(ticketData)
         .then(function (response) {
             res.json(response.data);
         })
@@ -21,6 +21,6 @@ function createZendeskTicket(req, res) {
         });
 }
 
-export default {
+module.exports = {
     createZendeskTicket
 };

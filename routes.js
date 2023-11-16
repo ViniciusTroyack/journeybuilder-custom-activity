@@ -1,8 +1,8 @@
-import { Router } from 'express';
-const router = Router();
-import { createZendeskTicket } from './src/controllers/zendeskController';
+const express = require("express");
+const router = express.Router();
+const zendeskController = require('./src/controllers/zendeskController');
 
-router.post('/execute', createZendeskTicket);
+router.post('/execute', zendeskController.createZendeskTicket);
 router.post("/publish", async (req, res) => {
     res.end();
 });
@@ -17,4 +17,4 @@ router.post("/stop", async (req, res) => {
 });
 
 
-export default router;
+module.exports = router;
