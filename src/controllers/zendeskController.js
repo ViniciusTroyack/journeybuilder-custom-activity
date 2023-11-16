@@ -5,10 +5,10 @@ function createZendeskTicket(req, res) {
     const ticketData = {
         ticket: {
             comment: {
-                body: req.body.body || 'Default comment body'
+                body: req.body.comentartios || 'Default comment body'
             },
-            priority: req.body.priority || 'normal',
-            subject: req.body.subject || 'Default ticket subject'
+            priority: req.body.prioridade || 'normal',
+            subject: req.body.assunto || 'Default ticket subject'
         }
     };
 

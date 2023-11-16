@@ -29,13 +29,13 @@ $(document).ready(() => {
 });
 
 // Evento de clique no botão "Enviar Dados"
-$('#enviarDados').on('click', () => {
+connection.on('done', function () {
 
   const assunto = $('#assunto').val();
   const comentario = $('#comentario').val();
   const abriuEmail = $('#abriuEmail').val();
   const respondeuSMS = $('#respondeuSMS').val();
-
+  const prioridade = $('prioridade').val()
   // Array para armazenar os campos da Data Extension selecionados
   const camposSelecionados = [];
   // Percorrer todos os checkboxes e verificar se estão selecionados
@@ -45,13 +45,16 @@ $('#enviarDados').on('click', () => {
     }
   });
 
-  // Exibir no console os valores selecionados para teste
-  console.log('Assunto:', assunto);
-  console.log('Comentário:', comentario);
-  console.log('Campos da Data Extension selecionados:', camposSelecionados);
-  console.log('Abriu o e-mail:', abriuEmail);
-  console.log('Respondeu o SMS:', respondeuSMS);
+  const payload = {
+    assunto: assunto,
+    prioridade: prioridade,
+    comentartios: {
+      comentario: comentario,
+      abriuEmail: abriuEmail,
+      respondeuSMS: respondeuSMS,
+      camposSelecionados: camposSelecionados
+    },
+  }
 
-  // Aqui você pode enviar os dados para a Salesforce Marketing Cloud
-  // utilizando o SDK ou API fornecidos pela plataforma
+  connection.trigger('updateActivity', payload);
 });
