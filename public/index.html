@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Preencha os dados do Ticket</title>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/design-system/2.20.1/styles/salesforce-lightning-design-system.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <script src="js/libs/postmonger.js"></script>
+  <script src="js/customActivity.js"></script>
+  <style>
+    .error-message {
+      color: #ff4d4d;
+    }
+
+    .error-field {
+      border-color: #ff4d4d;
+    }
+
+    .template-message {
+      margin-top: 6px;
+      padding: 7px;
+      border: 1px solid;
+      border-radius: 4px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 255px;
+    }
+
+    .slds-input::placeholder {
+      font-weight: bold;
+    }
+
+    .highlighted_text {
+      color: #5c44fa;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    img {
+      height: 58px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Ticket</h1>
+
+  <label for="assunto">Assunto:</label>
+  <input type="text" id="assunto"><br><br>
+
+  <label for="comentario">Comentário:</label>
+  <input type="text" id="comentario"><br><br>
+  <fieldset id="checkboxes"></fieldset><br><br>
+
+  <label for="abriuEmail">Abriu o e-mail:</label>
+  <select id="abriuEmail">
+    <option value="Abriu">Abriu o e-mail</option>
+    <option value="NaoAbriu">Não abriu o e-mail</option>
+  </select><br><br>
+
+  <label for="respondeuSMS">Respondeu o SMS:</label>
+  <select id="respondeuSMS">
+    <option value="Respondeu">Respondeu o SMS</option>
+    <option value="NaoRespondeu">Não respondeu o SMS</option>
+  </select><br><br>
+
+  <button id="enviarDados">Enviar Dados</button>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="postmonger.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

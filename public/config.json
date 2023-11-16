@@ -1,0 +1,70 @@
+{
+  "workflowApiVersion": "1.1",
+  "metaData": {
+    "icon": "./images/icon.png",
+    "iconSmall": "./images/icon.png",
+    "category": "message"
+  },
+  "type": "REST",
+  "lang": {
+    "en-US": {
+      "name": "Zendesk",
+      "description": "Criação de tickets Zendesk"
+    },
+    "pt-BR": {
+      "name": "Zendesk",
+      "description": "Criação de tickets Zendesk"
+    }
+  },
+  "arguments": {
+    "execute": {
+      "inArguments": [],
+      "outArguments": [],
+      "url": "https://qu0fmk7wi5.execute-api.us-east-1.amazonaws.com/dev/create-deal",
+      "verb": "POST",
+      "body": "",
+      "header": "",
+      "format": "json",
+      "timeout": 10000
+    }
+  },
+  "configurationArguments": {
+    "save": {
+      "url": "https://qu0fmk7wi5.execute-api.us-east-1.amazonaws.com/dev/on-save",
+      "verb": "POST"
+    },
+    "publish": {
+      "url": "https://qu0fmk7wi5.execute-api.us-east-1.amazonaws.com/dev/on-publish",
+      "verb": "POST"
+    },
+    "validate": {
+      "url": "https://qu0fmk7wi5.execute-api.us-east-1.amazonaws.com/dev/on-validate",
+      "verb": "POST"
+    },
+    "stop": {
+      "url": "https://qu0fmk7wi5.execute-api.us-east-1.amazonaws.com/dev/on-stop",
+      "verb": "POST"
+    }
+  },
+  "wizardSteps": [
+    {
+      "label": "Adicione um Deal ao Pipedrive",
+      "key": "step1"
+    }
+  ],
+  "userInterfaces": {
+    "configModal": {
+      "height": 200,
+      "width": 300,
+      "fullscreen": true
+    }
+  },
+  "schema": {
+    "arguments": {
+      "execute": {
+        "inArguments": [],
+        "outArguments": []
+      }
+    }
+  }
+}
