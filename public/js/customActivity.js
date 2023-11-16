@@ -1,4 +1,10 @@
 // app.js
+"use strict";
+
+var connection = new Postmonger.Session();
+
+var payload = {};
+var eventDefinitionKey = null;
 
 // Função para carregar checkboxes dinâmicos para cada campo da Data Extension
 function carregarCheckboxesDaDataExtension() {
