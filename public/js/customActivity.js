@@ -17,6 +17,7 @@ function onRender() {
   connection.trigger("requestTokens");
   connection.trigger("requestEndpoints");
   connection.trigger("requestInteraction");
+  connection.trigger('requestSchema');
 }
 
 function initialize(data) {
@@ -72,7 +73,6 @@ const getConfigActivityVars = () => {
   };
 };
 
-connection.trigger('requestSchema');
 connection.on('requestedSchema', function (data) {
   // save schema
   console.log('*** Schema ***', JSON.stringify(data['schema']));
