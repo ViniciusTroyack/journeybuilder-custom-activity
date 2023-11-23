@@ -3,18 +3,17 @@ const router = express.Router();
 const zendeskController = require('./src/controllers/zendeskController');
 
 router.post('/execute', zendeskController.createZendeskTicket);
-router.post("/publish", async (req, res) => {
+router.post("/on-publish", async (req, res) => {
     res.end();
 });
-router.post("/save", async (req, res) => {
+router.post("/on-save", async (req, res) => {
     res.end();
 });
-router.post("/validade", async (req, res) => {
+router.post("/on-validade", async (req, res) => {
     res.end();
 });
-router.post("/stop", async (req, res) => {
+router.post("/on-stop", async (req, res) => {
     res.end();
 });
-
 
 module.exports = router;

@@ -31,19 +31,19 @@
   "configurationArguments": {
     "applicationExtensionKey": "fb8ac8a0-f7f3-49e4-bbc1-34cc58529ab7",
     "save": {
-      "url": "https://zendesk-mktc-mycap-b597740293ac.herokuapp.com/save",
+      "url": "https://zendesk-mktc-mycap-b597740293ac.herokuapp.com/on-save",
       "verb": "POST"
     },
     "publish": {
-      "url": "https://zendesk-mktc-mycap-b597740293ac.herokuapp.com/publish",
+      "url": "https://zendesk-mktc-mycap-b597740293ac.herokuapp.com/on-publish",
       "verb": "POST"
     },
     "validate": {
-      "url": "https://zendesk-mktc-mycap-b597740293ac.herokuapp.com/validate",
+      "url": "https://zendesk-mktc-mycap-b597740293ac.herokuapp.com/on-validate",
       "verb": "POST"
     },
     "stop": {
-      "url": "https://zendesk-mktc-mycap-b597740293ac.herokuapp.com/stop",
+      "url": "https://zendesk-mktc-mycap-b597740293ac.herokuapp.com/on-stop",
       "verb": "POST"
     }
   },
