@@ -1,59 +1,73 @@
-
 "use strict";
 
 var connection = new Postmonger.Session();
 
+var payload = {};
+var eventDefinitionKey = null;
+var whatsappAccount = null;
 
-function carregarCheckboxesDaDataExtension() {
+$(window).ready(onRender);
 
-  const camposDataExtension = [
-    { name: 'Campo1', label: 'Campo 1' },
-    { name: 'Campo2', label: 'Campo 2' },
-    { name: 'Campo3', label: 'Campo 3' }
-  ];
+connection.on("initActivity", initialize);
+connection.on("requestedInteraction", requestedInteractionHandler);
+connection.on("clickedNext", save);
 
-  const checkboxesFieldset = $('#checkboxes');
-
-
-  camposDataExtension.forEach((campo) => {
-    checkboxesFieldset.append(`
-      <input type="checkbox" id="${campo.name}" value="${campo.name}">
-      <label for="${campo.name}">${campo.label}</label><br>
-    `);
-  });
+function onRender() {
+  connection.trigger("ready");
+  connection.trigger("requestTokens");
+  connection.trigger("requestEndpoints");
+  connection.trigger("requestInteraction");
 }
 
+function initialize(data) {
+  if (data) {
+    payload = data;
+  }
+  const hasInArguments = Boolean(
+    payload["arguments"] &&
+    payload["arguments"].execute &&
+    payload["arguments"].execute.inArguments &&
+    payload["arguments"].execute.inArguments.length > 0
+  );
 
-$(document).ready(() => {
-  carregarCheckboxesDaDataExtension();
-});
+  if (!hasInArguments) return;
 
-// connection.on('done', function () {
+  const args = payload.arguments.execute.inArguments[0];
 
-//   const assunto = $('#assunto').val();
-//   const comentario = $('#comentario').val();
-//   const abriuEmail = $('#abriuEmail').val();
-//   const respondeuSMS = $('#respondeuSMS').val();
-//   const prioridade = $('prioridade').val()
-//   // Array para armazenar os campos da Data Extension selecionados
-//   const camposSelecionados = [];
-//   // Percorrer todos os checkboxes e verificar se estão selecionados
-//   $('[type="checkbox"]').each(function () {
-//     if ($(this).is(':checked')) {
-//       camposSelecionados.push($(this).val());
-//     }
-//   });
+  document.querySelector("#assunto").value = args.assunto;
+  document.querySelector("#comentario").value = args.comentario;
+  document.querySelector("#prioridade").value = args.prioridade;
+}
 
-//   const payload = {
-//     assunto: assunto,
-//     prioridade: prioridade,
-//     comentartios: {
-//       comentario: comentario,
-//       abriuEmail: abriuEmail,
-//       respondeuSMS: respondeuSMS,
-//       camposSelecionados: camposSelecionados
-//     },
-//   }
+function requestedInteractionHandler(settings) {
+  try {
+    eventDefinitionKey = settings.triggers[0].metaData.eventDefinitionKey;
+  } catch (err) {
+    console.log(err);
+  }
+}
 
-//   connection.trigger('updateActivity', payload);
-// })
+function save() {
+  const props = getConfigActivityVars();
+
+  payload["arguments"].execute.inArguments = [
+    {
+      contactIdentifier: "{{Contact.Key}}",
+      assunto: props.assunto,
+      //to: `{{Event.${eventDefinitionKey}.\"${props.to}\"}}`,
+      prioridade: props.prioridade,
+      comentario: props.comentario,
+    },
+  ];
+
+  payload["metaData"].isConfigured = true;
+  connection.trigger("updateActivity", payload);
+}
+
+const getConfigActivityVars = () => {
+  return {
+    assunto: document.querySelector("#assunto").value,
+    prioridade: document.querySelector("#prioridade").value,
+    comentario: document.querySelector("#comentario").value,
+  };
+};
