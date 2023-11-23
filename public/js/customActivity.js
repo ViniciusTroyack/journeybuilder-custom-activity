@@ -74,6 +74,12 @@ const getConfigActivityVars = () => {
 };
 
 connection.on('requestedSchema', function (data) {
-  // save schema
-  console.log('*** Schema ***', JSON.stringify(data['schema']));
+  var camposDiv = $('#checkboxes')
+
+  data['schema'].forEach(function (item) {
+    var novoCampo = $('<input type="text" name="' + item.name + '" placeholder="' + item.name + '">');
+    camposDiv.append(novoCampo);
+  });
+
+
 });
