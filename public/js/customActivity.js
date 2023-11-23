@@ -77,9 +77,9 @@ connection.on('requestedSchema', function (data) {
   var camposDiv = $('#checkboxes')
 
   data['schema'].forEach(function (item) {
-    var novoCampo = $('<input type="text" name="' + item.name + '" placeholder="' + item.name + '">');
+    var novoCampo = $('<input type="checkbox" name="' + item.name + '" id="' + item.name + '">');
+    var labelCampo = $('<label for="' + item.name + '">' + item.name + '</label><br>');
     camposDiv.append(novoCampo);
+    camposDiv.append(labelCampo);
   });
-
-
 });
