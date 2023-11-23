@@ -10,7 +10,7 @@ router.post("/on-publish", async (req, res) => {
 router.post("/on-save", async (req, res) => {
     res.end();
 });
-router.post("/on-validade", async (req, res) => {
+router.post("/on-validate", async (req, res) => {
     res.end();
 });
 router.post("/on-stop", async (req, res) => {
