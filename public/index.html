@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Preencha os dados do Ticket</title>
+  <title>Novo Ticket</title>
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/design-system/2.20.1/styles/salesforce-lightning-design-system.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
@@ -56,16 +56,21 @@
 </head>
 
 <body>
-  <h1>Ticket</h1>
+  <h1>Novo Ticket</h1>
 
   <label for="assunto">Assunto:</label>
   <input type="text" id="assunto"><br><br>
 
   <label for="prioridade">Prioridade:</label>
-  <input type="text" id="prioridade"><br><br>
+  <select type="text" id="prioridade">
+    <option value="Low">Low</option>
+    <option value="Normal">Normal</option>
+    <option value="High">High</option>
+    <option value="Urgent">Urgent</option>
+  </select><br><br>
 
   <label for="comentario">Comentário:</label>
-  <input type="text" id="comentario"><br><br>
+  <textarea type="textarea" rows="4" cols="50" id="comentario"></textarea>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="./js/libs/postmonger.js"></script>

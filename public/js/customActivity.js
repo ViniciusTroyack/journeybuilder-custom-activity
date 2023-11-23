@@ -71,3 +71,9 @@ const getConfigActivityVars = () => {
     comentario: document.querySelector("#comentario").value,
   };
 };
+
+connection.trigger('requestSchema');
+connection.on('requestedSchema', function (data) {
+  // save schema
+  console.log('*** Schema ***', JSON.stringify(data['schema']));
+});

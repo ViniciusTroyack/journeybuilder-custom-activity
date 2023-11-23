@@ -7,7 +7,7 @@ function createZendeskTicket(req, res) {
             comment: {
                 body: req.body.inArguments[0].comentario || 'Default comment body'
             },
-            priority: req.body.inArguments[0].prioridade || 'normal',
+            priority: req.body.inArguments[0].prioridade || 'Low',
             subject: req.body.inArguments[0].assunto || 'Default ticket subject'
         }
     };
