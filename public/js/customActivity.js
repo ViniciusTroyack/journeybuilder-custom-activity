@@ -50,11 +50,8 @@ function requestedInteractionHandler(settings) {
 
 function save() {
   const props = getConfigActivityVars();
-
-  console.log(props.camposExtras)
-
   const camposExtras = props.camposExtras.reduce((acc, chave) => {
-    acc[chave] = chave;
+    acc[chave] = `{{Event.${eventDefinitionKey}."${chave}"}}`;
     return acc;
   }, {});
   payload["arguments"].execute.inArguments = [
@@ -66,7 +63,6 @@ function save() {
       camposExtras: camposExtras,
     },
   ];
-  console.log(JSON.stringify(payload))
   payload["metaData"].isConfigured = true;
   connection.trigger("updateActivity", payload);
 }
