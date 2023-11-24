@@ -49,8 +49,10 @@ function requestedInteractionHandler(settings) {
 }
 
 function save() {
-  console.log(props.camposExtras)
   const props = getConfigActivityVars();
+
+  console.log(props.camposExtras)
+
   const camposExtras = props.camposExtras.reduce((acc, chave) => {
     acc[chave] = chave;
     return acc;
