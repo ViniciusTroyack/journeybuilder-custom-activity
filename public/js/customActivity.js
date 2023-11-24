@@ -55,13 +55,20 @@ function save() {
     {
       contactIdentifier: "{{Contact.Key}}",
       assunto: props.assunto,
-      //to: `{{Event.${eventDefinitionKey}.\"${props.to}\"}}`,
       prioridade: props.prioridade,
       comentario: props.comentario,
+      camposExtras: (function () {
+        let camposExtrasObj = {};
+        props.camposExtras.forEach(campo => {
+          camposExtrasObj[campo] = `{{Event.${eventDefinitionKey}."${campo}"}}`;
+        });
+        return camposExtrasObj
+      })
     },
   ];
 
   payload["metaData"].isConfigured = true;
+  console.log(payload)
   connection.trigger("updateActivity", payload);
 }
 
