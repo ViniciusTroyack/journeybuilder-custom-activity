@@ -50,7 +50,7 @@ function requestedInteractionHandler(settings) {
 
 function save() {
   const props = getConfigActivityVars();
-
+  console.log(props.camposExtras)
   payload["arguments"].execute.inArguments = [
     {
       contactIdentifier: "{{Contact.Key}}",
@@ -66,10 +66,15 @@ function save() {
 }
 
 const getConfigActivityVars = () => {
+  var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+  checkboxes.forEach(function (checkbox) {
+    valoresSelecionados.push(checkbox.getAttribute('name'));
+  });
   return {
     assunto: document.querySelector("#assunto").value,
     prioridade: document.querySelector("#prioridade").value,
     comentario: document.querySelector("#comentario").value,
+    camposExtras: checkboxes,
   };
 };
 
@@ -77,7 +82,7 @@ connection.on('requestedSchema', function (data) {
   var camposDiv = $('#checkboxes')
 
   data['schema'].forEach(function (item) {
-    var novoCampo = $('<input type="checkbox" name="' + item.name + '" id="' + item.name + '">');
+    var novoCampo = $('<input type="checkbox" name="' + item.name + '" id="' + item.name + '" + value="' + item.name + '">');
     var labelCampo = $('<label for="' + item.name + '">' + item.name + '</label><br>');
     camposDiv.append(novoCampo);
     camposDiv.append(labelCampo);
