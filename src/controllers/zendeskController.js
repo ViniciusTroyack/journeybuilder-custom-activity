@@ -2,7 +2,7 @@
 const zendeskService = require('../services/zendeskService')
 
 function createZendeskTicket(req, res) {
-
+    console.log(JSON.stringify(req.body.inArguments[0]))
     const ticketData = {
         ticket: {
             comment: {
