@@ -50,7 +50,6 @@ function requestedInteractionHandler(settings) {
 
 function save() {
   const props = getConfigActivityVars();
-  console.log(props.camposExtras)
   payload["arguments"].execute.inArguments = [
     {
       contactIdentifier: "{{Contact.Key}}",
@@ -63,12 +62,11 @@ function save() {
           camposExtrasObj[campo] = `{{Event.${eventDefinitionKey}."${campo}"}}`;
         });
         return camposExtrasObj
-      })
+      }),
     },
   ];
 
   payload["metaData"].isConfigured = true;
-  console.log(JSON.stringify(payload, null, 2))
   connection.trigger("updateActivity", payload);
 }
 
