@@ -50,22 +50,23 @@ function requestedInteractionHandler(settings) {
 
 function save() {
   const props = getConfigActivityVars();
+  const camposExtras = function () {
+    let camposExtrasObj = {};
+    props.camposExtras.forEach(campo => {
+      camposExtrasObj[campo] = `{{Event.${eventDefinitionKey}."${campo}"}}`;
+    });
+    return camposExtrasObj
+  }
   payload["arguments"].execute.inArguments = [
     {
       contactIdentifier: "{{Contact.Key}}",
       assunto: props.assunto,
       prioridade: props.prioridade,
       comentario: props.comentario,
-      camposExtras: (function () {
-        let camposExtrasObj = {};
-        props.camposExtras.forEach(campo => {
-          camposExtrasObj[campo] = `{{Event.${eventDefinitionKey}."${campo}"}}`;
-        });
-        return camposExtrasObj
-      }),
+      camposExtras: camposExtras,
     },
   ];
-
+  console.log(JSON.stringify(payload))
   payload["metaData"].isConfigured = true;
   connection.trigger("updateActivity", payload);
 }
