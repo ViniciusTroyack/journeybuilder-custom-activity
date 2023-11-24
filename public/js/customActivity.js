@@ -66,6 +66,7 @@ function save() {
 }
 
 const getConfigActivityVars = () => {
+  var valoresSelecionados = []
   var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
   checkboxes.forEach(function (checkbox) {
     valoresSelecionados.push(checkbox.getAttribute('name'));
@@ -74,7 +75,7 @@ const getConfigActivityVars = () => {
     assunto: document.querySelector("#assunto").value,
     prioridade: document.querySelector("#prioridade").value,
     comentario: document.querySelector("#comentario").value,
-    camposExtras: checkboxes,
+    camposExtras: valoresSelecionados,
   };
 };
 
