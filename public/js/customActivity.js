@@ -49,14 +49,12 @@ function requestedInteractionHandler(settings) {
 }
 
 function save() {
+  console.log(props.camposExtras)
   const props = getConfigActivityVars();
-  const camposExtras = function () {
-    let camposExtrasObj = {};
-    props.camposExtras.forEach(campo => {
-      camposExtrasObj[campo] = `{{Event.${eventDefinitionKey}."${campo}"}}`;
-    });
-    return camposExtrasObj
-  }
+  const camposExtras = props.camposExtras.reduce((acc, chave) => {
+    acc[chave] = chave;
+    return acc;
+  }, {});
   payload["arguments"].execute.inArguments = [
     {
       contactIdentifier: "{{Contact.Key}}",
