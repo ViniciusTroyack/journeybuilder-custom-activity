@@ -3,8 +3,8 @@ const zendeskService = require('../services/zendeskService')
 
 function joinCommentAndExtraFields(jsonData) {
     try {
-        const data = JSON.parse(jsonData);
-
+        //const data = JSON.parse(jsonData);
+        const data = jsonData;
         if (Object.keys(data.camposExtras).length > 0) {
             for (const prop in data.camposExtras) {
                 data.comentario += ` ${prop}: ${data.camposExtras[prop]}`;
