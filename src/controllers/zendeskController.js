@@ -1,15 +1,36 @@
 
 const zendeskService = require('../services/zendeskService')
 
+function joinCommentAndExtraFields(jsonData) {
+    try {
+        const data = JSON.parse(jsonData);
+
+        if (Object.keys(data.camposExtras).length > 0) {
+            for (const prop in data.camposExtras) {
+                data.comentario += ` ${prop}: ${data.camposExtras[prop]}`;
+            }  
+            delete data.camposExtras;
+
+            return data;
+        }
+
+        return data;
+    } catch (error) {
+        console.error('Erro ao processar o JSON:', error.message);
+        return null;
+    }
+}  
+
 function createZendeskTicket(req, res) {
     console.log(JSON.stringify(req.body.inArguments[0]))
+    const data = joinCommentAndExtraFields(req.body.inArguments[0])
     const ticketData = {
         ticket: {
             comment: {
-                body: req.body.inArguments[0].comentario || 'Default comment body'
+                body: data.comentario || 'Sem Comentários'
             },
-            priority: req.body.inArguments[0].prioridade || 'Low',
-            subject: req.body.inArguments[0].assunto || 'Default ticket subject'
+            priority: data.prioridade || 'low',
+            subject: data.inArguments[0].assunto || 'Default ticket subject'
         }
     };
 
