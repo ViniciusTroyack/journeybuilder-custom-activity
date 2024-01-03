@@ -30,7 +30,7 @@ function createZendeskTicket(req, res) {
                 body: data.comentario || 'Sem Comentários'
             },
             priority: data.prioridade || 'low',
-            subject: data.inArguments[0].assunto || 'Default ticket subject'
+            subject: data.assunto || 'Default ticket subject'
         }
     };
 
