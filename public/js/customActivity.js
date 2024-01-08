@@ -17,6 +17,7 @@ function onRender() {
   connection.trigger("requestTokens");
   connection.trigger("requestEndpoints");
   connection.trigger("requestInteraction");
+  connection.trigger('requestInteractionDefaults')
   connection.trigger('requestSchema');
 }
 
