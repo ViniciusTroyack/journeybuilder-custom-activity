@@ -30,7 +30,11 @@ function createZendeskTicket(req, res) {
                 body: data.comentario || 'Sem Comentários'
             },
             priority: data.prioridade || 'low',
-            subject: data.assunto || 'Default ticket subject'
+            subject: data.assunto || 'Default ticket subject',
+            requester: {
+                name: data.nome || data.contactIdentifier,
+                email: data.contactDefaultEmail
+            }
         }
     };
 
