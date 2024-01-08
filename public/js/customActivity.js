@@ -3,6 +3,7 @@
 var connection = new Postmonger.Session();
 
 var payload = {};
+var defaultEmail = null
 var eventDefinitionKey = null;
 var whatsappAccount = null;
 
@@ -11,6 +12,10 @@ $(window).ready(onRender);
 connection.on("initActivity", initialize);
 connection.on("requestedInteraction", requestedInteractionHandler);
 connection.on("clickedNext", save);
+connection.on('requestedInteractionDefaults', function(settings) { 
+  defaultEmail = settings
+});
+
 
 function onRender() {
   connection.trigger("ready");
@@ -58,8 +63,7 @@ function save() {
   payload["arguments"].execute.inArguments = [
     {
       contactIdentifier: "{{Contact.Key}}",
-      contactDefaultEmail: "{{Contact.Email}}",
-      print: "{{Contact}}",
+      contactDefaultEmail: defaultEmail,
       assunto: props.assunto,
       prioridade: props.prioridade,
       comentario: props.comentario,
