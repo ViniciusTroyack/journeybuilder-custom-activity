@@ -12,9 +12,7 @@ $(window).ready(onRender);
 connection.on("initActivity", initialize);
 connection.on("requestedInteraction", requestedInteractionHandler);
 connection.on("clickedNext", save);
-connection.on('requestedInteractionDefaults', function(settings) { 
-  defaultEmail = settings
-});
+connection.on('requestedInteractionDefaults', requestEmail);
 
 
 function onRender() {
@@ -24,6 +22,10 @@ function onRender() {
   connection.trigger("requestInteraction");
   connection.trigger('requestInteractionDefaults')
   connection.trigger('requestSchema');
+}
+
+function requestEmail(contact){
+  defaultEmail = contact.email[0]
 }
 
 function initialize(data) {
