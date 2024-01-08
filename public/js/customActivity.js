@@ -58,7 +58,8 @@ function save() {
   payload["arguments"].execute.inArguments = [
     {
       contactIdentifier: "{{Contact.Key}}",
-      contactDefaultEmail: "{{Contact.Default.Email}}",
+      contactDefaultEmail: "{{Contact.Email}}",
+      print: "{{Contact}}",
       assunto: props.assunto,
       prioridade: props.prioridade,
       comentario: props.comentario,
