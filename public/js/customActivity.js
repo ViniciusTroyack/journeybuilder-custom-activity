@@ -26,7 +26,7 @@ function onRender() {
 
 function requestEmail(contact){
   
-  defaultEmail = contact.email
+  defaultEmail = contact
 }
 
 function initialize(data) {
