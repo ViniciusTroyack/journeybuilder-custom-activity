@@ -15,51 +15,63 @@
   <script src="js/customActivity.js"></script>
 
   <style>
-    .error-message {
-      color: #ff4d4d;
+
+    .form {
+     
+      max-width: 400px;
+      margin: 30px auto 0;
     }
 
-    .error-field {
-      border-color: #ff4d4d;
-    }
-
-    .template-message {
-      margin-top: 6px;
-      padding: 7px;
-      border: 1px solid;
-      border-radius: 4px;
-    }
-
-    textarea {
-      width: 100%;
-      height: 255px;
-    }
-
-    .slds-input::placeholder {
+    h1{
+      text-align: center;
+      font-size: 24px;
       font-weight: bold;
     }
 
-    .highlighted_text {
-      color: #5c44fa;
-      font-weight: 900;
-      cursor: pointer;
+    h2{
+      font-weight: bold
     }
-
-    .hidden {
-      display: none;
+    
+    label {
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #333; /* Cinza escuro */
     }
-
-    img {
-      height: 58px;
+    
+    /* Estilo para campos de entrada de texto */
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+      border: 1px solid #ccc; /* Cinza claro */
     }
+    
+    /* Estilo para caixas de seleção (checkbox) */
+    input[type="checkbox"] {
+      margin-right: 5px;
+      margin-top: 10px
+    }
+    
+    /* Estilo para menus de seleção (select) */
+    select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+      border: 1px solid #ccc; /* Cinza claro */
+    }
+    
   </style>
 </head>
 
 <body>
-  <h1>Novo Ticket</h1>
+  <div class="form">
+  <h1>Novo Ticket Zendesk</h1>
 
   <label for="assunto">Assunto:</label>
-  <input type="text" id="assunto"><br><br>
+  <input type="text" id="assunto" placeholder="Assunto do Ticket"><br><br>
 
   <label for="prioridade">Prioridade:</label>
   <select type="text" id="prioridade">
@@ -73,9 +85,10 @@
   <textarea type="textarea" rows="4" cols="50" id="comentario"></textarea>
 
   <div id="checkboxes">
-    <h1>Informações adicionais da Data Extension</h1>
+    <h2>Informações adicionais da Data Extension</h2>
+    
   </div>
-
+</div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="./js/libs/postmonger.js"></script>
 </body>

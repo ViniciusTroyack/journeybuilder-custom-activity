@@ -25,7 +25,8 @@ function onRender() {
 }
 
 function requestEmail(contact){
-  defaultEmail = contact.email[0]
+  var data = JSON.parse(contact)
+  defaultEmail = data.email[0]
 }
 
 function initialize(data) {
