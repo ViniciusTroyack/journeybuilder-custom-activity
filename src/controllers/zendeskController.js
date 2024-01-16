@@ -46,7 +46,7 @@ function createZendeskTicket(req, res) {
             res.json(response.data);
         })
         .catch(function (error) {
-            res.status(500).json({ error: error.message });
+            res.status(404).json({ error: error.message });
         });
 }
 
