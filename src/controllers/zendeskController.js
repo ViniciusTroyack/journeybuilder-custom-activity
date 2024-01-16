@@ -24,6 +24,7 @@ function joinCommentAndExtraFields(jsonData) {
 function createZendeskTicket(req, res) {
     console.log(JSON.stringify(req.body.inArguments[0]))
     const data = joinCommentAndExtraFields(req.body.inArguments[0])
+    console.log(data.contactDefaultEmail.email[0])
     const ticketData = {
         ticket: {
             comment: {
