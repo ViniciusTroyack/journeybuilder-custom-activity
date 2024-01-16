@@ -13,7 +13,7 @@ connection.on("initActivity", initialize);
 connection.on("requestedInteraction", requestedInteractionHandler);
 connection.on("clickedNext", save);
 connection.on('requestedInteractionDefaults', function(data) {
-  defaultEmail = data
+  defaultEmail = data.email[0]
 });
 
 
@@ -67,7 +67,7 @@ function save() {
   payload["arguments"].execute.inArguments = [
     {
       contactIdentifier: "{{Contact.Key}}",
-      contactDefaultEmail: defaultEmail.email[0],
+      contactDefaultEmail: defaultEmail,
       assunto: props.assunto,
       prioridade: props.prioridade,
       comentario: props.comentario,

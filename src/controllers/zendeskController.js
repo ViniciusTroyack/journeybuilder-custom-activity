@@ -36,7 +36,7 @@ function createZendeskTicket(req, res) {
                 email: data.contactDefaultEmail
             },
             status: 'closed',
-            tags: ['Marketing Cloud Journey']
+            tags: ['Marketing-Cloud-Journey']
         }
     };
 
