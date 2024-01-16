@@ -34,19 +34,21 @@ function createZendeskTicket(req, res) {
             subject: data.assunto || 'Default ticket subject',
             requester: {
                 name: data.nome || data.contactIdentifier,
-                email: data.contactDefaultEmail
+                email: data.contactDefaultEmail.email[0]
             },
             status: 'closed',
             tags: ['Marketing-Cloud-Journey']
         }
     };
 
+    console.log(ticketData)
+    
     zendeskService.createTicket(ticketData)
         .then(function (response) {
             res.json(response.data);
         })
         .catch(function (error) {
-            res.status(404).json({ error: error.message });
+            res.json({ error: error.message });
         });
 }
 
