@@ -7,7 +7,7 @@ function joinCommentAndExtraFields(jsonData) {
         const data = jsonData;
         if (Object.keys(data.camposExtras).length > 0) {
             for (const prop in data.camposExtras) {
-                data.comentario += `<br>${prop}: ${data.camposExtras[prop]}<br>`;
+                data.comentario += `\n${prop}: ${data.camposExtras[prop]}`;
             }  
             delete data.camposExtras;
 
@@ -35,7 +35,7 @@ function createZendeskTicket(req, res) {
             requester: {
                 email: data.contactDefaultEmail.email[0]
             },
-            status: data.nome,
+            status: data.status,
             tags: ['Marketing-Cloud-Journey']
         }
     };
