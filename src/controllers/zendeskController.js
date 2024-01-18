@@ -7,7 +7,7 @@ function joinCommentAndExtraFields(jsonData) {
         const data = jsonData;
         if (Object.keys(data.camposExtras).length > 0) {
             for (const prop in data.camposExtras) {
-                data.comentario += ` ${prop}: ${data.camposExtras[prop]}`;
+                data.comentario += `<br>${prop}: ${data.camposExtras[prop]}<br>`;
             }  
             delete data.camposExtras;
 
@@ -33,10 +33,9 @@ function createZendeskTicket(req, res) {
             priority: data.prioridade || 'low',
             subject: data.assunto || 'Default ticket subject',
             requester: {
-                name: data.nome || data.contactIdentifier,
                 email: data.contactDefaultEmail.email[0]
             },
-            status: 'closed',
+            status: data.nome,
             tags: ['Marketing-Cloud-Journey']
         }
     };
