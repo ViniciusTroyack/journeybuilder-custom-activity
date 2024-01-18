@@ -13,7 +13,7 @@ connection.on("initActivity", initialize);
 connection.on("requestedInteraction", requestedInteractionHandler);
 connection.on("clickedNext", save);
 connection.on('requestedInteractionDefaults', function(data) {
-  defaultEmail = data.email[0]
+  defaultEmail = data
 });
 
 
@@ -25,10 +25,6 @@ function onRender() {
   connection.trigger('requestInteractionDefaults')
   connection.trigger('requestSchema');
 }
-
-// function requestEmail(contact){
-//   defaultEmail = contact
-// }
 
 function initialize(data) {
   if (data) {
@@ -48,6 +44,7 @@ function initialize(data) {
   document.querySelector("#assunto").value = args.assunto;
   document.querySelector("#comentario").value = args.comentario;
   document.querySelector("#prioridade").value = args.prioridade;
+  
 }
 
 function requestedInteractionHandler(settings) {
@@ -71,6 +68,7 @@ function save() {
       assunto: props.assunto,
       prioridade: props.prioridade,
       comentario: props.comentario,
+      status: props.status,
       camposExtras: camposExtras,
     },
   ];
@@ -88,6 +86,7 @@ const getConfigActivityVars = () => {
     assunto: document.querySelector("#assunto").value,
     prioridade: document.querySelector("#prioridade").value,
     comentario: document.querySelector("#comentario").value,
+    status: document.querySelector("#status").value,
     camposExtras: valoresSelecionados,
   };
 };
