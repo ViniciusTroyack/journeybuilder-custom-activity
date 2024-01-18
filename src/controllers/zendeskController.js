@@ -33,6 +33,7 @@ function createZendeskTicket(req, res) {
             priority: data.prioridade || 'low',
             subject: data.assunto || 'Default ticket subject',
             requester: {
+                name: data.assunto || data.contactDefaultEmail.email[0],
                 email: data.contactDefaultEmail.email[0]
             },
             status: data.status,
