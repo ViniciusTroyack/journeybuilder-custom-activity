@@ -17,7 +17,7 @@ function createTicket(ticketData) {
     // Configuração para a requisição HTTP POST para criar o ticket no Zendesk
     const config = {
         method: 'POST',
-        url: 'https://circulotestes.zendesk.com/api/v2/tickets',
+        url: process.env.ZENDESK_TICKT_URL,
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Basic ${process.env.ZENDESK_AUTH}`, // Usa a chave de autenticação do ambiente
