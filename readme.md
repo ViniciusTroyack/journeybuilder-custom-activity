@@ -1,44 +1,64 @@
+#Journey Builder Custom Activity
 
-1 - Rode o comando **npm install** para instalar as dependências do projeto.
+Este codigo cria uma atividade customizada dentro do Marketing Cloud Journey Builder para a abertura de tickets dentro do Zendesk.
 
-Caso utilizem o deploy pelo Lambda Aws que é o recomendado por nós:
+## Instruções de Configuração e Implantação
 
-2- Será necessário configurar um usuário com liberação dentro do AWS Amazon, https://www.serverless.com/framework/docs/providers/aws/guide/credentials/
+Este documento fornece um guia passo a passo para configurar e implantar o projeto.
 
-3 - Informar os dados da configuração no cmd: serverless config credentials --provider aws --key <chave> --secret <segredo>
+## Configuração do Projeto
 
-4- Caso prefiram um servidor mais próximo, o arquivo serverless.yml possui o región que pode ser alterada  para alguma das outras localidades do AWS que fiquem mais próximas, também é possível alterar o nome da aplicação alterando o service do serverless.yml.
+1. Execute o comando `npm install` para instalar as dependências do projeto.
 
-5 - Npm install --save serverless-http
+## Implantação com Lambda AWS (Recomendado)
 
-6 - sls deploy fará o deploy criando a rota no lambda da AWS e no gateway já interpretando a aplicação node.
+Se optar pelo deploy via Lambda AWS, siga estas etapas:
 
-7 - Como o .env não sobe para o lambda da AWS, é necessário ir no console do usuário AWS -> lambda -> clicar na função que subiram -> configuração -> variáveis de ambiente -> adicionar todas as variáveis que estão no .env
+1. É necessário configurar um usuário com permissões adequadas dentro do AWS Amazon. Consulte a [documentação oficial](https://www.serverless.com/framework/docs/providers/aws/guide/credentials/) para orientações sobre como configurar as credenciais.
 
-8 - Adicionar a rota completa que foi gerada no amazon e alterar no Config.json e index.html, 
-ex :
-Config.json:
-https://enpoint-gerado-na-amazon/create-deal
-https://enpoint-gerado-na-amazon/on-save
-https://enpoint-gerado-na-amazon/on-publish
-https://enpoint-gerado-na-amazon/on-validate
-https://enpoint-gerado-na-amazon/on-stop
+2. Informe os dados da configuração no terminal utilizando o comando: `serverless config credentials --provider aws --key <chave> --secret <segredo>`
 
-Caso façam o deploy por outro formato, é necessário:
-1- abrir o app.js
+3. Caso prefira um servidor mais próximo, o arquivo `serverless.yml` possui a região que pode ser alterada para uma das outras localidades do AWS que fiquem mais próximas. Também é possível alterar o nome da aplicação alterando o serviço do `serverless.yml`.
 
-2- remover o trecho de código const serverless = require('serverless-http');
+4. Execute o comando `npm install --save serverless-http`.
 
-3 - Descomentar
+5. O comando `sls deploy` fará o deploy, criando a rota no Lambda da AWS e no Gateway, já interpretando a aplicação node.
 
-// app.listen(3000);
+6. Como o arquivo `.env` não é implantado no Lambda da AWS, é necessário configurar as variáveis de ambiente manualmente. Acesse o console do usuário AWS, vá para Lambda, clique na função implantada, vá para Configuração > Variáveis de Ambiente e adicione todas as variáveis que estão no `.env`.
 
-4 - alterar 
+7. Adicione a rota completa que foi gerada no Amazon e altere no `Config.json` e `index.html`, Por exemplo:
 
-module.exports.handler = serverless(app);
-para 
-module.exports = app;
+    Config.json:
+    - https://enpoint-gerado-na-amazon/create-deal
+    - https://enpoint-gerado-na-amazon/on-save
+    - https://enpoint-gerado-na-amazon/on-publish
+    - https://enpoint-gerado-na-amazon/on-validate
+    - https://enpoint-gerado-na-amazon/on-stop
 
-5 - Dessa forma a aplicação volta a funcionar como um node padrão e pode ser integrado da forma que desejarem em outro deploy.
+## Implantação por Outro Formato
 
-Fazer as configurações no Marketing CLoud: (passo a passo na doc)
+Se optar por implantar de outra forma:
+
+1. Abra o arquivo `app.js`.
+
+2. Remova o trecho de código: `const serverless = require('serverless-http');`
+
+3. Descomente: `// app.listen(3000);`
+
+4. Altere:
+
+    ```
+    module.exports.handler = serverless(app);
+    ```
+
+    para 
+
+    ```
+    module.exports = app;
+    ```
+
+    Dessa forma, a aplicação voltará a funcionar como um nó padrão e poderá ser integrada da forma desejada em outro deploy.
+
+## Configurações no Marketing Cloud
+
+Siga o passo a passo na documentação para configurar o Marketing Cloud.
