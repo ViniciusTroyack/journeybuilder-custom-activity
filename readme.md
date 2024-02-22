@@ -1,4 +1,4 @@
-#Journey Builder Custom Activity
+# Journey Builder Custom Activity
 
 Este codigo cria uma atividade customizada dentro do Marketing Cloud Journey Builder para a abertura de tickets dentro do Zendesk.
 
